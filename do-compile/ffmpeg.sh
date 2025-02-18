@@ -231,6 +231,9 @@ echo "----------------------"
 echo "[✅] --enable-parser=av3a"
 CFG_FLAGS="$CFG_FLAGS --enable-parser=av3a --enable-demuxer=av3a"
 
+echo "[✅] --enable-rubberband"
+CFG_FLAGS="$CFG_FLAGS --enable-rubberband"
+
 echo "----------------------"
 echo "[*] configure"
 
