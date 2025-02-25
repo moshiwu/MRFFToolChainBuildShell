@@ -127,14 +127,14 @@ fi
 
 echo "----------------------"
 
-pkg-config --libs mp3lame --silence-errors >/dev/null && enable_lame=1
+# pkg-config --libs mp3lame --silence-errors >/dev/null && enable_lame=1
 
-if [[ $enable_lame ]];then
-    echo "[✅] --enable-libmp3lame"
-    CFG_FLAGS="$CFG_FLAGS --enable-gpl --enable-libmp3lame"
-else
-    echo "[❌] --disable-libmp3lame"
-fi
+# if [[ $enable_lame ]];then
+    # echo "[✅] --enable-libmp3lame"
+    # CFG_FLAGS="$CFG_FLAGS --enable-gpl --enable-libmp3lame"
+# else
+#     echo "[❌] --disable-libmp3lame"
+# fi
 
 echo "----------------------"
 # use pkg-config fix ff4.0--ijk0.8.8--20210426--001 use openssl 1_1_1m occur can't find openssl error.
@@ -165,14 +165,14 @@ echo "----------------------"
 #just wait videotoolbox support decode av1
 # CFG_FLAGS="$CFG_FLAGS --enable-decoder=av1"
 
-pkg-config --libs dav1d --silence-errors >/dev/null && enable_dav1d=1
+# pkg-config --libs dav1d --silence-errors >/dev/null && enable_dav1d=1
 
-if [[ $enable_dav1d ]];then
-    echo "[✅] --enable-libdav1d"
-    CFG_FLAGS="$CFG_FLAGS --enable-libdav1d --enable-decoder=libdav1d"
-else
-    echo "[❌] --disable-libdav1d"
-fi
+# if [[ $enable_dav1d ]];then
+#     echo "[✅] --enable-libdav1d"
+#     CFG_FLAGS="$CFG_FLAGS --enable-libdav1d --enable-decoder=libdav1d"
+# else
+#     echo "[❌] --disable-libdav1d"
+# fi
 
 echo "----------------------"
 
@@ -187,15 +187,15 @@ fi
 
 echo "----------------------"
 
-pkg-config --libs libbluray --silence-errors >/dev/null && enable_bluray=1
+# pkg-config --libs libbluray --silence-errors >/dev/null && enable_bluray=1
 
-if [[ $enable_bluray ]];then
-    echo "[✅] --enable-libbluray"
-    CFG_FLAGS="$CFG_FLAGS --enable-libbluray --enable-protocol=bluray"
-else
-    echo "[❌] --disable-libbluray"
-fi
-echo "----------------------"
+# if [[ $enable_bluray ]];then
+#     echo "[✅] --enable-libbluray"
+#     CFG_FLAGS="$CFG_FLAGS --enable-libbluray --enable-protocol=bluray"
+# else
+#     echo "[❌] --disable-libbluray"
+# fi
+# echo "----------------------"
 
 pkg-config --libs dvdread --silence-errors >/dev/null && enable_dvdread=1
 
@@ -230,9 +230,6 @@ echo "----------------------"
 
 echo "[✅] --enable-parser=av3a"
 CFG_FLAGS="$CFG_FLAGS --enable-parser=av3a --enable-demuxer=av3a"
-
-echo "[✅] --enable-rubberband"
-CFG_FLAGS="$CFG_FLAGS --enable-rubberband"
 
 echo "----------------------"
 echo "[*] configure"

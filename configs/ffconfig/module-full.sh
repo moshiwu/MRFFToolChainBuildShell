@@ -554,3 +554,9 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"
 # enable http gzip、deflate
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-zlib"
 
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-gpl"
+# export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-libmp3lame"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-librubberband"
+# export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --extra-cflags=-I/usr/local/Cellar/lame/3.100/include"
+# export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --extra-ldflags=-L/usr/local/lib"
+#export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --extra-ldflags=-L/opt/homebrew/bin"
