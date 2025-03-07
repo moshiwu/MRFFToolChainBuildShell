@@ -42,7 +42,7 @@ Clone vendor library git repository,Checkout specify commit,Apply patches
 OPTIONS:
     -p                   Specify platform (ios,macos,tvos,android), can't be nil
     -a                   Specify archs (x86_64,arm64,x86_64_simulator,arm64_simulator,all) all="x86_64,arm64,x86_64_simulator,arm64_simulator"
-    -l                   Specify which libs need init (all|libyuv|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg), can't be nil
+    -l                   Specify which libs need init (all|libyuv|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg|rubberband), can't be nil
     -s                   Specify workspace dir
     --help               Show help banner of init command
     --skip-pull-base     Skip pull base repo
@@ -60,7 +60,7 @@ Compile libs, such as ass、ffmpeg...
 OPTIONS:
     -c            Specify sub command (build,clean,rebuild) rebuild=clean+build, default is build
     -a            Specify archs (x86_64,arm64,x86_64_simulator,arm64_simulator,all) all="x86_64,arm64,x86_64_simulator,arm64_simulator"
-    -l            Specify which libs need 'cmd' (all|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg), can't be nil
+    -l            Specify which libs need 'cmd' (all|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg|rubberband), can't be nil
     -s            Specify workspace dir
     -j            Force number of cores to be used
     --help        Show help banner of compile command
@@ -78,7 +78,7 @@ Download and Install Pre-compile library to product dir
 
 OPTIONS:
    -p            Specify platform (ios,macos,tvos), can't be nil
-   -l            Specify which libs need 'cmd' (all|libyuv|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg), can't be nil
+   -l            Specify which libs need 'cmd' (all|libyuv|openssl|opus|bluray|dav1d|dvdread|freetype|fribidi|harfbuzz|unibreak|ass|ffmpeg|rubberband), can't be nil
    -s            Specify workspace dir
    -correct-pc  Specify a path for correct the pc file prefix recursion
    --help        Show intall help

@@ -69,13 +69,112 @@ else
     echo "LDFLAG:$LDFLAGS"
     echo "FF_CFG_FLAGS: $CFG_FLAGS"
     echo
+
+    # 设置PKG_CONFIG_PATH环境变量以便找到所有第三方库
+    PKGCONFIG_DIRS=(
+        "rubberband"
+        "opus"
+        "x264"
+        "x265"
+        "vpx"
+        "fdk-aac"
+        "lame"
+        "aom"
+        "dav1d"
+        "openssl"
+        "ass"
+        "freetype"
+        "fontconfig"
+        "fribidi"
+        "xml2"
+        "bluray"
+        "srt"
+        "rist"
+        "ssh"
+        "zmq"
+        "webp"
+        "vorbis"
+        "ogg"
+        "uavs3d"
+        "fftw3"
+    )
+    
+    # 确定正确的架构名称和配置选项
+    ACTUAL_ARCH="$MR_ARCH"
+    ARCH_SPECIFIC_CONFIG=""
+    
+    if [[ "$MR_BUILD_NAME" == *"simulator"* ]]; then
+        echo "检测到模拟器目标: $MR_BUILD_NAME"
+        if [[ "$MR_BUILD_NAME" == *"arm64_simulator"* ]]; then
+            ACTUAL_ARCH="arm64_simulator"
+            echo "使用架构: arm64_simulator"
+        elif [[ "$MR_BUILD_NAME" == *"x86_64_simulator"* ]]; then
+            ACTUAL_ARCH="x86_64_simulator"
+            echo "使用架构: x86_64_simulator"
+            # 对于x86_64模拟器，禁用所有与ARM相关的特性
+            ARCH_SPECIFIC_CONFIG="--disable-asm --disable-neon --disable-inline-asm"
+            echo "禁用ARM特有指令以避免架构不兼容问题"
+        fi
+    fi
+    
+    PKG_CONFIG_PATH_NEW=""
+    for lib in "${PKGCONFIG_DIRS[@]}"; do
+        # 使用实际的架构名称
+        lib_path="${MR_SHELL_ROOT_DIR}/build/product/ios/${lib}-${ACTUAL_ARCH}/lib/pkgconfig"
+        if [[ -d "$lib_path" ]]; then
+            if [[ -z "$PKG_CONFIG_PATH_NEW" ]]; then
+                PKG_CONFIG_PATH_NEW="$lib_path"
+            else
+                PKG_CONFIG_PATH_NEW="$PKG_CONFIG_PATH_NEW:$lib_path"
+            fi
+            echo "添加库路径: $lib_path"
+        fi
+    done
+    
+    if [[ ! -z "$PKG_CONFIG_PATH_NEW" ]]; then
+        export PKG_CONFIG_PATH="$PKG_CONFIG_PATH_NEW:$PKG_CONFIG_PATH"
+    fi
+    
+    # 确保pkg-config使用静态库模式
+    export PKG_CONFIG="pkg-config --static"
+    echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
+
+    # 准备包含路径和库路径
+    EXTRA_CFLAGS_LIBS=""
+    EXTRA_LDFLAGS_LIBS=""
+    for lib in "${PKGCONFIG_DIRS[@]}"; do
+        # 使用实际的架构名称
+        lib_include_path="${MR_SHELL_ROOT_DIR}/build/product/ios/${lib}-${ACTUAL_ARCH}/include"
+        lib_lib_path="${MR_SHELL_ROOT_DIR}/build/product/ios/${lib}-${ACTUAL_ARCH}/lib"
+        
+        if [[ -d "$lib_include_path" ]]; then
+            EXTRA_CFLAGS_LIBS="$EXTRA_CFLAGS_LIBS -I$lib_include_path"
+        fi
+        if [[ -d "$lib_lib_path" ]]; then
+            EXTRA_LDFLAGS_LIBS="$EXTRA_LDFLAGS_LIBS -L$lib_lib_path"
+        fi
+    done
+
+    # 配置FFmpeg
     ./configure \
         $CFG_FLAGS \
+        --prefix=$MR_BUILD_PREFIX \
         --cc="$MR_CC" \
-        --as="perl ${MR_GAS_PERL} -arch ${MR_ARCH} -- $MR_CC" \
-        --extra-cflags="$C_FLAGS" \
-        --extra-cxxflags="$C_FLAGS" \
-        --extra-ldflags="$LDFLAGS"
+        --cxx="$MR_CXX" \
+        --as="$MR_AS" \
+        --ld="$MR_LD" \
+        --target-os=darwin \
+        --arch=${FFARCH} \
+        --extra-cflags="$C_FLAGS $EXTRA_CFLAGS_LIBS" \
+        --extra-ldflags="$LDFLAGS $EXTRA_LDFLAGS_LIBS -framework Accelerate" \
+        --enable-static \
+        --enable-pic \
+        --enable-librubberband \
+        --enable-libopus \
+        --disable-shared \
+        --pkg-config-flags="--static" \
+        $ARCH_SPECIFIC_CONFIG \
+        $USER_CFG
 fi
 
 #----------------------

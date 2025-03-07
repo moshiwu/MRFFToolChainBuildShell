@@ -550,4 +550,6 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-sdl2"
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"
 # enable http gzip、deflate
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-zlib"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-librubberband"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-gpl"
 

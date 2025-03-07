@@ -70,8 +70,13 @@ else
     echo "FF_CFG_FLAGS: $CFG_FLAGS"
     echo
 
+    # 设置PKG_CONFIG_PATH环境变量以便找到RubberBand
+    export PKG_CONFIG_PATH="${MR_SHELL_ROOT_DIR}/build/product/android/rubberband-${MR_ARCH}/lib/pkgconfig:$PKG_CONFIG_PATH"
+    echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
+
     ./configure \
         $CFG_FLAGS \
+        --prefix=$MR_BUILD_PREFIX \
         --cc=${MR_TRIPLE_CC} \
         --as=${MR_TRIPLE_CC} \
         --ld=${MR_TRIPLE_CC} \
@@ -79,10 +84,15 @@ else
         --nm=${MR_NM} \
         --strip=${MR_STRIP} \
         --ranlib=${MR_RANLIB} \
-        --extra-cflags="$C_FLAGS" \
-        --extra-cxxflags="$C_FLAGS" \
-        --extra-ldflags="$LDFLAGS" \
-        --pkg-config=${MR_PKG_CONFIG_EXECUTABLE}
+        --extra-cflags="$C_FLAGS -I${MR_SHELL_ROOT_DIR}/build/product/android/rubberband-${MR_ARCH}/include" \
+        --extra-cxxflags="$C_FLAGS -I${MR_SHELL_ROOT_DIR}/build/product/android/rubberband-${MR_ARCH}/include" \
+        --extra-ldflags="$LDFLAGS -L${MR_SHELL_ROOT_DIR}/build/product/android/rubberband-${MR_ARCH}/lib" \
+        --enable-static \
+        --enable-pic \
+        --enable-librubberband \
+        --disable-shared \
+        --pkg-config=${MR_PKG_CONFIG_EXECUTABLE} \
+        $USER_CFG
 fi
 
 #----------------------
