@@ -1,0 +1,14 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/include
+
+Name: libswresample
+Description: FFmpeg audio resampling library
+Version: 4.12.100
+Requires: libavutil >= 58.29.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lswresample -lm
+Libs.private: 
+Cflags: -I${includedir}

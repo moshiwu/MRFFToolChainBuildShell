@@ -1,0 +1,14 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal-simulator/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-x86_64_simulator/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-x86_64_simulator/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 60.31.102
+Requires: libswresample >= 4.12.100, libavutil >= 58.29.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavcodec -pthread -liconv -lm -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/dav1d-x86_64_simulator/lib -ldav1d -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-x86_64_simulator/lib -lopus -lm -framework VideoToolbox -lz -framework CoreFoundation -framework CoreMedia -framework CoreVideo
+Libs.private: 
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal-simulator/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-x86_64_simulator/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-x86_64_simulator/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 58.29.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil -pthread -lm -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/openssl-x86_64_simulator/lib -lssl -lcrypto -framework VideoToolbox -framework CoreFoundation -framework CoreMedia -framework CoreVideo
+Libs.private: 
+Cflags: -I${includedir}

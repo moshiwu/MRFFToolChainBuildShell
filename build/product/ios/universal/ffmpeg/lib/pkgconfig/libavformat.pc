@@ -1,0 +1,14 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 60.16.100
+Requires: libavcodec >= 60.31.102, libswresample >= 4.12.100, libavutil >= 58.29.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavformat -lm -lbz2 -lz -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/openssl/lib -lssl -lcrypto -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/dvdread/lib -ldvdread
+Libs.private: 
+Cflags: -I${includedir}

@@ -1,0 +1,10 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/uavs3d
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: uavs3d
+Description: AVS3 decoder library 
+Version: 1.2.3
+Libs: -L${libdir} -luavs3d -lm -lpthread
+Cflags: -I${includedir}

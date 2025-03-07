@@ -1,0 +1,16 @@
+# Opus codec reference implementation pkg-config file
+
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/opus
+exec_prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-arm64
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-arm64/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-arm64/include
+
+Name: Opus
+Description: Opus IETF audio codec ( build)
+URL: https://opus-codec.org/
+Version: 1.5.2
+Requires:
+Conflicts:
+Libs: -L/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-arm64/lib -lopus
+Libs.private: -lm
+Cflags: -I/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/opus-arm64/include/opus

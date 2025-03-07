@@ -1,0 +1,13 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/dvdread
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libdvdread
+Description: Low level DVD access library
+Version: 6.1.3
+
+Requires.private: 
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -ldvdread

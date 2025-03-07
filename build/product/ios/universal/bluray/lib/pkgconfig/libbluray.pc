@@ -1,0 +1,12 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/bluray
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libbluray
+Description: library supporting Blu-ray playback
+Version: 1.3.4
+Libs: -L${libdir} -lbluray
+Libs.private:   -framework CoreFoundation
+Requires.private:  libxml-2.0 >= 2.6
+Cflags: -I${includedir}

@@ -1,0 +1,10 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal-simulator/harfbuzz
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: harfbuzz
+Description: HarfBuzz text shaping library
+Version: 10.2.0
+Requires: freetype2 >=  12.0.6
+Libs: -L${libdir} -lharfbuzz -lm
+Cflags: -I${includedir}/harfbuzz

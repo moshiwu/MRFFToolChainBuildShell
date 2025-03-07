@@ -1,0 +1,10 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/freetype
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: FreeType 2
+Description: A free, high-quality, and portable font engine.
+URL: https://freetype.org
+Version: 26.2.20
+Libs: -L${libdir} -lfreetype -lz -lbz2
+Cflags: -I${includedir}/freetype2

@@ -1,0 +1,14 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/lib
+includedir=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/ffmpeg-arm64/include
+
+Name: libavdevice
+Description: FFmpeg device handling library
+Version: 60.3.100
+Requires: libavformat >= 60.16.100, libavcodec >= 60.31.102, libswresample >= 4.12.100, libavutil >= 58.29.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavdevice -lm
+Libs.private: 
+Cflags: -I${includedir}

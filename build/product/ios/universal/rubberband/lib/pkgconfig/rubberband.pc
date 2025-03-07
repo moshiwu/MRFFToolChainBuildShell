@@ -1,0 +1,10 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal/rubberband
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: rubberband
+Description: Audio time-stretching and pitch-shifting library
+Version: 4.0.0
+Libs: -L${libdir} -lrubberband -lstdc++ -framework Accelerate
+Cflags: -I${includedir}

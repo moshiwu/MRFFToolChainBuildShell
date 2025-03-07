@@ -1,0 +1,10 @@
+prefix=/Users/moqiaowen/Downloads/ijkplayer/FFToolChain/build/product/ios/universal-simulator/harfbuzz
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: harfbuzz-subset
+Description: HarfBuzz font subsetter
+Version: 10.2.0
+Requires: harfbuzz =  10.2.0
+Libs: -L${libdir} -lharfbuzz-subset -lm
+Cflags: -I${includedir}/harfbuzz
